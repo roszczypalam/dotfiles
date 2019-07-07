@@ -14,12 +14,20 @@ At first install packages:
 sudo apt-get install xbindkeys && sudo apt-get install wmctrl
 ```
 
+Make your own `.xbindkeyssrc` file:
 
+```
+xbindkeys -d > ~/.xbindkeysrc
+```
 
+Example shortcut:
 
+```
+"bash ~/dotfiles/open_terminal.sh gnome-terminal-server"
+  control + 9
+```
 
-
-To run shortcuts use `open_terminal.sh` (wmctrl needed) script and `xbindkeys` package 
+It uses `open_terminal.sh` script which is included in dotfiles directory
 
 
 ## Getting Started
