@@ -30,6 +30,31 @@ Example shortcut:
 It uses `open_terminal.sh` script which is included in dotfiles directory
 
 
+### Shared clipboard
+
+There is added in vimrc:
+```
+set clipboard=unnamedplus
+```
+which makes clipboard shared between vim and system clipboard
+
+When it's not working on your machine check if your vim version supports shared clipboard:
+
+```
+vim --version | grep clipboard
+```
+
+if the output have -clipboard or -xterm_clipboard
+
+Please install following packages (via apt-get)
+
+
+`vim-gtk` or `vim-gnome`
+
+
+### next
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.

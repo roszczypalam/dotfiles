@@ -12,7 +12,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive' " plugin on GitHub repo
-Plugin 'git://git.wincent.com/command-t.git' " commenting with gc
 Plugin 'scrooloose/nerdtree' " file drawer, open with :NERDTreeToggle
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'chriskempson/base16-vim'
@@ -20,12 +19,12 @@ Plugin 'dracula/vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'drewtempelmeyer/palenight.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-
+Plugin 'junegunn/fzf'
+Plugin 'davidhalter/jedi-vim'
 
 
 call vundle#end()
@@ -103,3 +102,14 @@ let g:lightline = {
       \ }
 
 set clipboard=unnamedplus 
+
+"Syntastic
+let g:syntastic_quiet_messages = { 'regex': 'E501' }
+
+"FZF shortcuts
+nnoremap <c-p> :FZF<cr>
+
+let g:jedi#use_splits_not_buffers = "right"
+
+
+
