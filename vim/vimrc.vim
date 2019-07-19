@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive' " plugin on GitHub repo
 Plugin 'scrooloose/nerdtree' " file drawer, open with :NERDTreeToggle
+Plugin 'scrooloose/nerdcommenter' " file drawer, open with :NERDTreeToggle
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'chriskempson/base16-vim'
 Plugin 'dracula/vim'
@@ -32,6 +33,8 @@ call vundle#end()
 set t_Co=256
 set background=dark
 colorscheme palenight
+syntax on
+autocmd InsertEnter,InsertLeave * set cul!
 
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -107,9 +110,8 @@ set clipboard=unnamedplus
 let g:syntastic_quiet_messages = { 'regex': 'E501' }
 
 "FZF shortcuts
-nnoremap <c-p> :FZF<cr>
 
 let g:jedi#use_splits_not_buffers = "right"
 
-
+nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 

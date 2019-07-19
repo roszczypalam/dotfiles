@@ -51,3 +51,36 @@ Please install following packages (via apt-get)
 
 `vim-gtk` or `vim-gnome`
 
+
+### FZF with nerdtree 
+now fzfz will ignore nerdtree buffer and will never open file in it 
+
+```
+nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
+```
+
+
+
+
+
+### JediVim keybindings
+
+
+    Completion <C-Space>
+    Goto assignments <leader>g (typical goto function)
+    Goto definitions <leader>d (follow identifier as far as possible, includes imports and statements)
+    Show Documentation/Pydoc K (shows a popup with assignments)
+    Renaming <leader>r
+    Usages <leader>n (shows all the usages of a name)
+    Open module, e.g. :Pyimport os (opens the os module)
+
+### TODO
+
+coping from other tmux window -> xclip or vim mode in terminal (ex. i want to get path using pwd and paste it to another window)
+
+
+
+
+
+
+
