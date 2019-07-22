@@ -6,6 +6,7 @@ filetype off
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -25,7 +26,9 @@ Plugin 'drewtempelmeyer/palenight.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'christoomey/vim-tmux-navigator'
 
 
 call vundle#end()
@@ -114,4 +117,5 @@ let g:syntastic_quiet_messages = { 'regex': 'E501' }
 let g:jedi#use_splits_not_buffers = "right"
 
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
+nnoremap <silent> <expr> <c-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Ag\<cr>"
 

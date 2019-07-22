@@ -154,7 +154,7 @@ case "$key" in
     ($'\t')
         reply=( $current_idx "LEAVE" )
         ;;
-    ($'\C-L')
+    ($'\C-u')
         reply=( -1 "REDRAW" )
         ;;
     (\])
@@ -243,7 +243,7 @@ case "$key" in
             _nlist_cursor_visibility 0
         fi
         ;;
-    ($'\C-L')
+    ($'\C-u')
         reply=( -1 "REDRAW" )
         ;;
 

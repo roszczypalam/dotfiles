@@ -59,9 +59,9 @@ now fzfz will ignore nerdtree buffer and will never open file in it
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 ```
 
+### FZF
 
-
-
+Added 2 plugins into vimrc related to fzf, to use Ag - it have to be installed with package manager
 
 ### JediVim keybindings
 
@@ -74,10 +74,17 @@ nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : ''
     Usages <leader>n (shows all the usages of a name)
     Open module, e.g. :Pyimport os (opens the os module)
 
+### Navigating between tmux & vim
+
+I've installed plugin called vim-tmux-navigator to easly navigate through tmux & vim panes with one-type bindings
+
 ### TODO
 
 coping from other tmux window -> xclip or vim mode in terminal (ex. i want to get path using pwd and paste it to another window)
 
+add readme about FZF and Ag
+
+coping from other windows to vimsearch "/" or smth 
 
 
 
