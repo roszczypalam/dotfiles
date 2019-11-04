@@ -15,10 +15,12 @@
 	export VISUAL=vim
 
 # Virtualenvwrapper
+
+#TODO
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/PROJECTS
 source /usr/local/bin/virtualenvwrapper.sh
-
-
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 source ~/dotfiles/zsh/plugins/fixls.zsh

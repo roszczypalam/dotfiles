@@ -1,4 +1,5 @@
 filetype off
+let mapleader = ";"
 
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -43,8 +44,6 @@ hi Normal guibg=NONE ctermbg=NONE
 
 filetype plugin indent on    " required
 
-" Auto open nerdTree 
-au VimEnter * NERDTree
 " close NERDTree after a file is opened
 let g:NERDTreeQuitOnOpen=0
 " " show hidden files in NERDTree
@@ -119,3 +118,16 @@ let g:jedi#use_splits_not_buffers = "right"
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 nnoremap <silent> <expr> <c-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Ag\<cr>"
 
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+xnoremap p pgvy

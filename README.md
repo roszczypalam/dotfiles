@@ -41,7 +41,7 @@ which makes clipboard shared between vim and system clipboard
 When it's not working on your machine check if your vim version supports shared clipboard:
 
 ```
-vim --version | grep clipboard
+vim --version | grep clipboard 
 ```
 
 if the output have -clipboard or -xterm_clipboard
@@ -78,6 +78,10 @@ Added 2 plugins into vimrc related to fzf, to use Ag - it have to be installed w
 
 I've installed plugin called vim-tmux-navigator to easly navigate through tmux & vim panes with one-type bindings
 
+### Restarting tmux 
+
+just kill it `tmux kill-server` -> reloading it should work but somehow it doesn't :<
+
 ### TODO
 
 coping from other tmux window -> xclip or vim mode in terminal (ex. i want to get path using pwd and paste it to another window)
@@ -86,6 +90,15 @@ add readme about FZF and Ag
 
 coping from other windows to vimsearch "/" or smth 
 
+fix vi copy -> it's commented in config files
+
+virtual env could be installed automatically
+
+reloading tmux efficiently
+
+i want to name tmux sessions and changing order
+
+resizing vim windows and tmux panes
 
 
 
