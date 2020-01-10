@@ -47,8 +47,6 @@ hi Normal guibg=NONE ctermbg=NONE
 
 filetype plugin indent on    " required
 
-" Auto open nerdTree 
-"au VimEnter * NERDTree
 " close NERDTree after a file is opened
 let g:NERDTreeQuitOnOpen=0
 " " show hidden files in NERDTree
