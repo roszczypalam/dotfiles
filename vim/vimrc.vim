@@ -1,4 +1,6 @@
 filetype off
+let mapleader = ";"
+set expandtab
 
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -29,6 +31,8 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'valloric/matchtagalways'
+Plugin 'Chiel92/vim-autoformat'
 
 
 call vundle#end()
@@ -44,7 +48,7 @@ hi Normal guibg=NONE ctermbg=NONE
 filetype plugin indent on    " required
 
 " Auto open nerdTree 
-au VimEnter * NERDTree
+"au VimEnter * NERDTree
 " close NERDTree after a file is opened
 let g:NERDTreeQuitOnOpen=0
 " " show hidden files in NERDTree
@@ -74,6 +78,13 @@ au BufNewFile,BufRead *.py
 "Html indent
 au BufNewFile,BufRead *.html set tabstop=2 softtabstop=2 shiftwidth=2 autoindent expandtab
 
+au BufNewFile,BufRead *.js
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set autoindent |
+    \ set fileformat=unix |
+    \ set expandtab
 
 
 
@@ -113,9 +124,22 @@ set clipboard=unnamedplus
 let g:syntastic_quiet_messages = { 'regex': 'E501' }
 
 "FZF shortcuts
-
-let g:jedi#use_splits_not_buffers = "right"
+let g:jedi#use_splits_not_buffers = "bottom"
 
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 nnoremap <silent> <expr> <c-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Ag\<cr>"
 
+"Dont make stupid swap files
+set noswapfile
+
+xnoremap p pgvy
+
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
