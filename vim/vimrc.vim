@@ -33,12 +33,18 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'valloric/matchtagalways'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'vim-python/python-syntax'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'mattn/emmet-vim'
 
 
 call vundle#end()
 
 set t_Co=256
-set background=dark
+"set background=dark
 colorscheme palenight
 syntax on
 autocmd InsertEnter,InsertLeave * set cul!
@@ -57,6 +63,7 @@ nmap <silent> <leader>k :NERDTreeToggle<cr>
 nmap <silent> <leader>y :NERDTreeFind<cr
 "Don't show swp files
 let NERDTreeIgnore = ['\.swp$', '\.pyc$']
+let NERDTreeMapOpenInTab='c'
 
 "Windows switch
 nnoremap <C-J> <C-W><C-J>
@@ -108,8 +115,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:lightline = {
@@ -141,3 +146,24 @@ nnoremap <leader>6 6gt
 nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
+nnoremap <F8> :SyntasticCheck<cr>
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_mode_map = { 'mode': 'passive' }
+hi SpellBad term=reverse ctermbg=darkgreen
+
+inoremap <expr> <c-j> ("\<C-n>")
+inoremap <expr> <c-k> ("\<C-p>")
+
+let g:python_highlight_all = 1
+nnoremap <leader>% :MtaJumpToOtherTag<cr>
+
+"show full path always
+set statusline+=%F
