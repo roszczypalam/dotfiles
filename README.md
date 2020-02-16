@@ -82,6 +82,12 @@ I've installed plugin called vim-tmux-navigator to easly navigate through tmux &
 
 just kill it `tmux kill-server` -> reloading it should work but somehow it doesn't :<
 
+### Tmux yanking selected text 
+
+I've added fature for tmux to copy text from visual selection to system clipboard.
+
+to use it `xclip` should be installed (via apt-get)
+
 ### TODO
 
 coping from other tmux window -> xclip or vim mode in terminal (ex. i want to get path using pwd and paste it to another window)
