@@ -39,13 +39,12 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'arzg/vim-colors-xcode'
 
 
 call vundle#end()
 
-set t_Co=256
-"set background=dark
-colorscheme palenight
+set background=dark
 syntax on
 autocmd InsertEnter,InsertLeave * set cul!
 
@@ -167,3 +166,7 @@ nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
 "show full path always
 set statusline+=%F
+
+colorscheme xcodedarkhc
+execute "set t_8f=\e[38;2;%lu;%lu;%lum"
+execute "set t_8b=\e[48;2;%lu;%lu;%lum"

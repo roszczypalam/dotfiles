@@ -74,4 +74,4 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
 fi
 
 source ~/dotfiles/zsh/prompt.sh
-TERM=xterm-256color
+#TERM=xterm-256color
