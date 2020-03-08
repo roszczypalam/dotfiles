@@ -23,7 +23,6 @@ Plugin 'dracula/vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'wakatime/vim-wakatime'
 Plugin 'drewtempelmeyer/palenight.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
