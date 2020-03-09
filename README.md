@@ -88,6 +88,14 @@ I've added fature for tmux to copy text from visual selection to system clipboar
 
 to use it `xclip` should be installed (via apt-get)
 
+### Base 64 bug
+
+I had strange bug documented here : https://github.com/tmux-plugins/tmux-yank/issues/115
+
+It looks like it solves my problem
+
+`set -s set-clipboard off`
+
 ### TODO
 
 coping from other tmux window -> xclip or vim mode in terminal (ex. i want to get path using pwd and paste it to another window)
