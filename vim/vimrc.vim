@@ -146,6 +146,9 @@ nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <F8> :SyntasticCheck<cr>
 
+"moving current buffer to new tab (with closing it)
+nnoremap <leader>t <C-w>T
+
 "syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
