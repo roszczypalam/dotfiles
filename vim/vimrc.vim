@@ -39,6 +39,12 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'arzg/vim-colors-xcode'
+Plugin 'sakshamgupta05/vim-todo-highlight'
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
 
 
 call vundle#end()
@@ -172,3 +178,26 @@ set statusline+=%F
 colorscheme xcodedarkhc
 execute "set t_8f=\e[38;2;%lu;%lu;%lum"
 execute "set t_8b=\e[48;2;%lu;%lu;%lum"
+
+
+" Update Git signs every time the text is changed
+autocmd User SignifySetup
+            \ execute 'autocmd! signify' |
+            \ autocmd signify TextChanged,TextChangedI * call sy#start()
+
+let g:xcodedarkhc_green_comments = 1
+
+augroup vim-colors-xcode
+    autocmd!
+augroup END
+
+autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
+autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
