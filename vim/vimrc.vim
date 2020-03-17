@@ -24,7 +24,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'drewtempelmeyer/palenight.vim'
-Plugin 'itchyny/lightline.vim'
+"Plugin 'itchyny/lightline.vim'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -45,6 +45,9 @@ Plugin 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 
 call vundle#end()
@@ -201,3 +204,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+let g:airline_theme='deus'
+
+let g:webdevicons_enable_airline_statusline = 1
+let g:airline_powerline_fonts = 1
