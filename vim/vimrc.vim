@@ -40,14 +40,15 @@ Plugin 'arcticicestudio/nord-vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'arzg/vim-colors-xcode'
 Plugin 'sakshamgupta05/vim-todo-highlight'
-" Track the engine.
-Plugin 'SirVer/ultisnips'
+Plugin 'numirias/semshi'
+Plugin 'Yggdroot/indentLine'
 
-" Snippets are separated from the engine. Add this if you want them:
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 
 
 call vundle#end()
@@ -113,13 +114,13 @@ au VimEnter * highlight clear SignColumn
 highlight clear LineNr
 set number
 " toggle invisible characters
- set list
- set listchars=tab:▸\ 
- set showbreak=↪
+set list
+set listchars=tab:▸\ 
+set showbreak=↪
 set pastetoggle=<F2>
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_check_on_open = 1
@@ -131,7 +132,7 @@ let g:lightline = {
 set clipboard=unnamedplus 
 
 "Syntastic
-let g:syntastic_quiet_messages = { 'regex': 'E501' }
+"let g:syntastic_quiet_messages = { 'regex': 'E501' }
 
 "FZF shortcuts
 let g:jedi#use_splits_not_buffers = "bottom"
@@ -153,14 +154,14 @@ nnoremap <leader>6 6gt
 nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
-nnoremap <F8> :SyntasticCheck<cr>
+nnoremap <leader>q :SyntasticCheck<cr>
 
 "moving current buffer to new tab (with closing it)
 nnoremap <leader>t <C-w>T
 
 "syntastic
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_auto_loc_list = 0
@@ -172,13 +173,12 @@ hi SpellBad term=reverse ctermbg=darkgreen
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
 
-let g:python_highlight_all = 1
+"let g:python_highlight_all = 1
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
 "show full path always
 set statusline+=%F
 
-colorscheme xcodedarkhc
 execute "set t_8f=\e[38;2;%lu;%lu;%lum"
 execute "set t_8b=\e[48;2;%lu;%lu;%lum"
 
@@ -188,17 +188,13 @@ autocmd User SignifySetup
             \ execute 'autocmd! signify' |
             \ autocmd signify TextChanged,TextChangedI * call sy#start()
 
-let g:xcodedarkhc_green_comments = 1
 
 augroup vim-colors-xcode
     autocmd!
 augroup END
 
-autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
-autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -209,3 +205,43 @@ let g:airline_theme='deus'
 
 let g:webdevicons_enable_airline_statusline = 1
 let g:airline_powerline_fonts = 1
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_checkers = ['python', 'flake8', 'pep8', 'pyflakes', 'pylint']
+let g:black_skip_string_normalization = 1
+
+
+" Black macchiato with single quotes
+function! s:RunBlackMacchiato() range
+    let cmd = "black-macchiato"
+    if !executable(cmd)
+        echohl ErrorMsg
+        echom "black-macchiato not found!"
+        echohl None
+        return
+    endif
+
+    silent execute a:firstline . "," . a:lastline . "!" . cmd . ' --skip-string-normalization'
+
+    echo "Done formatting."
+
+endfunction
+
+" Create a command to call the black-macchiato function
+command -range BlackMacchiato <line1>,<line2>call <sid>RunBlackMacchiato()
+
+" Optionally add keyboard shortcuts to call the command in normal and visual modes
+autocmd FileType python xnoremap <buffer> <leader>f :'<,'>BlackMacchiato<cr>
+
+set colorcolumn=89
+
+set cursorline
+
+autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
+autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
+
+let g:xcodedarkhc_green_comments = 1
+
+colorscheme xcodedarkhc
+
+nnoremap <Leader>vr :source $MYVIMRC<CR>
+set lazyredraw

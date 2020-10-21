@@ -5,7 +5,7 @@
 	setopt share_history # setopt inc_append_history
 
 # Aliases
-	alias vim="nvim "
+	#alias vim="nvim "
 	mkdir -p /tmp/log
 	
 	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
