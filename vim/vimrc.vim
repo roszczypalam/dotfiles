@@ -26,16 +26,13 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'drewtempelmeyer/palenight.vim'
 "Plugin 'itchyny/lightline.vim'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'valloric/matchtagalways'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'vim-python/python-syntax'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'arzg/vim-colors-xcode'
@@ -43,8 +40,7 @@ Plugin 'sakshamgupta05/vim-todo-highlight'
 Plugin 'numirias/semshi'
 Plugin 'Yggdroot/indentLine'
 
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+"Plugin 'honza/vim-snippets'
 
 Plugin 'ryanoasis/vim-devicons'
 "Plugin 'vim-airline/vim-airline'
@@ -63,7 +59,7 @@ filetype plugin indent on    " required
 
 " close NERDTree after a file is opened
 let g:NERDTreeQuitOnOpen=0
-" " show hidden files in NERDTree
+ " show hidden files in NERDTree
 let NERDTreeShowHidden=1
 " " Toggle NERDTree
 nmap <silent> <leader>k :NERDTreeToggle<cr>
@@ -201,8 +197,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-let g:airline_theme='deus'
-
 let g:webdevicons_enable_airline_statusline = 1
 let g:airline_powerline_fonts = 1
 let g:syntastic_python_python_exec = 'python3'
@@ -241,7 +235,16 @@ autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
 
 let g:xcodedarkhc_green_comments = 1
 
-colorscheme xcodedarkhc
+"colorscheme xcodedarkhc
+"colorscheme onedark
+colorscheme palenight
 
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 set lazyredraw
+
+
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
