@@ -18,9 +18,9 @@ Plugin 'tpope/vim-fugitive' " plugin on GitHub repo
 Plugin 'scrooloose/nerdtree' " file drawer, open with :NERDTreeToggle
 Plugin 'scrooloose/nerdcommenter' " file drawer, open with :NERDTreeToggle
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'chriskempson/base16-vim'
-Plugin 'dracula/vim'
-Plugin 'morhetz/gruvbox'
+"Plugin 'chriskempson/base16-vim'
+"Plugin 'dracula/vim'
+"Plugin 'morhetz/gruvbox'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'drewtempelmeyer/palenight.vim'
@@ -30,21 +30,36 @@ Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'vim-python/python-syntax'
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'arzg/vim-colors-xcode'
-Plugin 'sakshamgupta05/vim-todo-highlight'
+"Plugin 'Chiel92/vim-autoformat'
+"Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-python/python-syntax'
+"Plugin 'arcticicestudio/nord-vim'
+"Plugin 'mattn/emmet-vim'
+"Plugin 'arzg/vim-colors-xcode'
+"Plugin 'sakshamgupta05/vim-todo-highlight'
 Plugin 'numirias/semshi'
-Plugin 'Yggdroot/indentLine'
+"Plugin 'Yggdroot/indentLine'
+"Plugin 'shime/vim-livedown'
+Plugin 'dense-analysis/ale'
+Plugin 'gcmt/taboo.vim'
+Plugin 'bagrat/vim-buffet'
+Plugin 'prettier/vim-prettier', {'do': 'yarn install'}
+Plugin 'puremourning/vimspector'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'ycm-core/YouCompleteMe'
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
 
 "Plugin 'honza/vim-snippets'
 
-Plugin 'ryanoasis/vim-devicons'
+"Plugin 'ryanoasis/vim-devicons'
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'yuttie/comfortable-motion.vim'
 
 
 call vundle#end()
@@ -96,6 +111,23 @@ au BufNewFile,BufRead *.js
     \ set expandtab
 
 
+au BufNewFile,BufRead *.tsx
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set autoindent |
+    \ set fileformat=unix |
+    \ set expandtab
+
+au BufNewFile,BufRead *.ts
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set autoindent |
+    \ set fileformat=unix |
+    \ set expandtab
+
+
 
 if (has("termguicolors"))
   set termguicolors
@@ -131,10 +163,10 @@ set clipboard=unnamedplus
 "let g:syntastic_quiet_messages = { 'regex': 'E501' }
 
 "FZF shortcuts
-let g:jedi#use_splits_not_buffers = "bottom"
+let g:jedi#use_splits_not_buffers = "left"
 
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
-nnoremap <silent> <expr> <c-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Ag\<cr>"
+nnoremap <silent> <expr> <c-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Ag \<cr>"
 
 "Dont make stupid swap files
 set noswapfile
@@ -178,6 +210,9 @@ set statusline+=%F
 execute "set t_8f=\e[38;2;%lu;%lu;%lum"
 execute "set t_8b=\e[48;2;%lu;%lu;%lum"
 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType ts setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType tsx setlocal ts=2 sts=2 sw=2 expandtab
 
 " Update Git signs every time the text is changed
 autocmd User SignifySetup
@@ -225,6 +260,11 @@ command -range BlackMacchiato <line1>,<line2>call <sid>RunBlackMacchiato()
 
 " Optionally add keyboard shortcuts to call the command in normal and visual modes
 autocmd FileType python xnoremap <buffer> <leader>f :'<,'>BlackMacchiato<cr>
+autocmd FileType javascript xnoremap <buffer> <leader>f :'<,'>:PrettierPartial<cr>
+autocmd BufNewFile,BufRead *.tsx xnoremap <buffer> <leader>f :'<,'>:PrettierPartial<cr>
+autocmd BufNewFile,BufRead *.ts xnoremap <buffer> <leader>f :'<,'>:PrettierPartial<cr>
+
+let g:prettier#config#tab_width = '4'
 
 set colorcolumn=89
 
@@ -248,3 +288,31 @@ inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
+let g:ale_fix_on_save = 1
+"let g:ale_python_isort_use_global = 1
+
+"let g:ale_fixers = ['isort']
+
+nnoremap <leader>v :vsp %<cr>
+let g:NERDTreeWinPos = "right"
+
+let g:comfortable_motion_scroll_down_key = "j"
+let g:comfortable_motion_scroll_up_key = "k"
+let g:prettier#config#tab_width = 'auto'
+
+
+
+com! -bar -bang Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter=: --nth=4..'}, 'right'), <bang>0)
+let g:vimspector_enable_mappings = 'HUMAN'
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+
+
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"

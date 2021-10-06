@@ -1,0 +1,43 @@
+Profiling unit testów (zostawiam tutaj może komuś się przyda)
+
+https://github.com/pyutils/line_profiler pobrać tą paczkę
+Dodać na koniec testu (pliku w którym chcemy zrobić profiling, niestety łyka tylko cały plik więc trzeba wyskipować reszte testów która nas nie obchodzi)
+
+import pytest
+pytest.main([__file__])
+
+Dodać dekorator do funkcji którą chcemy sprawdzić (bez importów, libka dodaje profile do builtins
+    @profile
+    def __get__(self, instance: FsModel, owner):
+        directory = Path(instance._directory)
+        for filename in [f'{self.name}.npz', f'{self.name}.npy']:
+            try:
+                file = np.load(directory.joinpath(filename))
+                return file['arr_0']
+            except FileNotFoundError:
+                pass
+        return None
+
+Odpalić PYTHONPATH="src/backend:tests" kernprof -l 'tests/backend/bhi/test_crop.py' w konsoli
+
+Odpalić python -m line_profiler test_crop.py.lprof
+
+Output:
+Total time: 0.023072 s
+File: /home/zeton/SEMANTIVE/prodigi/src/backend/fs/field.py
+Function: __get__ at line 69
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    69                                               @profile
+    70                                               def __get__(self, instance: FsModel, owner):
+    71        16        953.0     59.6      4.1          directory = Path(instance._directory)
+    72
+    73        16         40.0      2.5      0.2          for filename in [f'{self.name}.npz', f'{self.name}.npy']:
+    74        16          6.0      0.4      0.0              try:
+    75        16       3804.0    237.8     16.5                  file = np.load(directory.joinpath(filename))
+    76        16      18269.0   1141.8     79.2                  return file['arr_0']
+    77
+    78                                                       except FileNotFoundError:
+    79                                                           pass
+    80
+    81                                                   return None

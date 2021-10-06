@@ -18,9 +18,8 @@
 
 #TODO
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/PROJECTS
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 source ~/dotfiles/zsh/plugins/fixls.zsh
@@ -75,3 +74,22 @@ fi
 
 source ~/dotfiles/zsh/prompt.sh
 #TERM=xterm-256color
+
+
+alias dcb='docker-compose build'
+alias dce='docker-compose exec'
+alias dcps='docker-compose ps'
+alias dcrestart='docker-compose restart'
+alias dcrm='docker-compose rm'
+alias dcr='docker-compose run'
+alias dcstop='docker-compose stop'
+alias dcup='docker-compose up'
+alias dcupb='docker-compose up --build'
+alias dcupd='docker-compose up -d'
+alias dcdn='docker-compose down'
+alias dcl='docker-compose logs'
+alias dclf='docker-compose logs -f'
+alias dcpull='docker-compose pull'
+alias dcstart='docker-compose start'
+alias dck='docker-compose kill'
+
